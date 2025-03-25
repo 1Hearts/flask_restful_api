@@ -9,22 +9,21 @@ from models import User, Item
 
 app = Flask(__name__)
 
-# MySQL 데이터베이스 설정
+# MySQL Database
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:0003@localhost/flask_api'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = 'supersecretkey'
 app.config['JWT_SECRET_KEY'] = 'superjwtsecretkey'
 
-# 업로드 설정
+# upload
 app.config['UPLOAD_FOLDER'] = 'uploads'
-app.config['MAX_CONTENT_LENGTH'] = 5 * 1024 * 1024  # 최대 파일 크기: 5MB
+app.config['MAX_CONTENT_LENGTH'] = 5 * 1024 * 1024  
 
-# 데이터베이스 초기화
+# database reset
 db.init_app(app)
 jwt = JWTManager(app)
 
 
-# 로그인 엔드포인트 (JWT 토큰 발급)
 @app.route('/login', methods=['POST'])
 def login():
     data = request.get_json()
@@ -40,7 +39,7 @@ def login():
     return jsonify({"access_token": access_token}), 200
 
 
-# 회원가입 엔드포인트
+# register point
 @app.route('/register', methods=['POST'])
 def register():
     data = request.get_json()
@@ -60,7 +59,7 @@ def register():
     return jsonify({"message": "User registered successfully"}), 201
 
 
-# 새로운 아이템 만들기 (Create)
+# Create new item
 @app.route('/items', methods=['POST'])
 @jwt_required()
 def create_item():
@@ -78,7 +77,7 @@ def create_item():
     return jsonify({"message": "Item created successfully"}), 201
 
 
-# 모든 아이템 조회 (Read All)
+# Read all
 @app.route('/items', methods=['GET'])
 def get_items():
     items = Item.query.all()
@@ -86,7 +85,7 @@ def get_items():
     return jsonify(result), 200
 
 
-# 특정 아이템 조회 (Read One)
+# Read One
 @app.route('/items/<int:item_id>', methods=['GET'])
 def get_item(item_id):
     item = Item.query.get(item_id)
@@ -97,7 +96,7 @@ def get_item(item_id):
     return jsonify(result), 200
 
 
-# 아이템 수정 (Update)
+# Update item
 @app.route('/items/<int:item_id>', methods=['PUT'])
 @jwt_required()
 def update_item(item_id):
@@ -119,13 +118,12 @@ def update_item(item_id):
     return jsonify({"message": "Item updated successfully"}), 200
 
 
-# 아이템 삭제 (Delete)
+# Delete item
 @app.route('/items/<int:item_id>', methods=['DELETE'])
 @jwt_required()
 def delete_item(item_id):
     current_user = get_jwt_identity()
     
-    # 다시 세션에서 객체를 가져오기 (세션 오류 방지)
     with app.app_context():
         item = db.session.get(Item, item_id)
 
@@ -144,5 +142,5 @@ def delete_item(item_id):
 
 if __name__ == '__main__':
     with app.app_context():
-        db.create_all()  # 데이터베이스 테이블 생성 (새 모델 포함)
+        db.create_all()  # database table
     app.run(debug=True)
