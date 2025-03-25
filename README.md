@@ -18,11 +18,12 @@ I used a MySQL database to store everything and also added some error handling t
 
 ## How To Use This Project
 
-### 1. Setting Up The Virtual Environment (Optional, but good to do)
+###  Setting Up The Virtual Environment
 ```bash
 python -m venv venv
 source venv/bin/activate    # For Mac/Linux
 venv\Scripts\activate       # For Windows
+
 ---
 
 ## Team Members
