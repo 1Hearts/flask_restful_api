@@ -1,30 +1,39 @@
 # Flask RESTful API Project
 
-## About This Project
-Hey! This is a simple RESTful API project made with Flask.  
-Basically, it lets you do stuff like signing up, logging in, uploading files, and managing items (like creating, reading, updating, and deleting them).  
-I used a MySQL database to store everything and also added some error handling to make sure it doesn’t break easily.  
+##  Team
+Chanho Kim
+
+##  About This Project
+Hey! This is a simple RESTful API project I made using Flask.  
+Basically, it lets you do stuff like signing up, logging in, uploading files, and managing items (creating, reading, updating, and deleting them).  
+I used MySQL for storing all the data, and I also made sure there’s some error handling so the app doesn't just crash randomly.  
 
 ---
 
-## What It Can Do
-1. User Authentication (Logging in and getting a token to use the protected routes)
+##  What This App Can Do
+1. User Authentication (Logging in and getting a token to access private stuff)
 2. Uploading and Viewing Files
-3. CRUD Operations (Creating, Reading, Updating, Deleting items)
-4. Handling Errors (Like 400, 401, 404, and 500 errors)
-5. Public and Protected Routes (Some routes need you to log in first)
+3. CRUD Operations (Create, Read, Update, Delete items)
+4. Error Handling (For stuff like 400, 401, 404, and 500 errors)
+5. Public and Protected Routes (Some things you can access without logging in, some you can't)
 
 ---
 
-## How To Use This Project
+##  How To Set Up and Run This App (Step-by-step Guide)
+Here's how you can set up everything and get it running.
 
-###  Setting Up The Virtual Environment
+###  1. Setting Up The Virtual Environment
+1. First, open your terminal (VSCode, CMD, or PowerShell) and go to your project folder (`flask_restful_api`).  
+2. Then, make a virtual environment and activate it like this:
+
 ```bash
+# Create a virtual environment
 python -m venv venv
-source venv/bin/activate    # For Mac/Linux
-venv\Scripts\activate       # For Windows
 
----
+# Activate the environment
+# For Windows
+venv\Scripts\activate
 
-## Team Members
-- **Member:** Chanho
+# For Mac/Linux
+source venv/bin/activate
+
