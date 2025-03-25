@@ -23,6 +23,7 @@ I used a MySQL database to store everything and also added some error handling t
 python -m venv venv
 source venv/bin/activate    # For Mac/Linux
 venv\Scripts\activate       # For Windows
+---
 
 ## Team Members
 - **Member:** Chanho
